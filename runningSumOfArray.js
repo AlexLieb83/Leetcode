@@ -7,11 +7,11 @@
 //  * @return {number[]}
 //  */
 var runningSum = function (nums) {
-  let result = [nums[0]];
+  let results = [nums[0]];
   for (let i = 1; i < nums.length; i++) {
-    result.push(nums[i] + result[i - 1]);
+    results.push(nums[i] + results[i - 1]);
   }
-  return result;
+  return results;
 };
 
 // Example 1:
