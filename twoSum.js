@@ -27,14 +27,36 @@
 
 // Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
-//Brute Force
+//Using HashMap
 var twoSum = function (nums, target) {
+  //create our map to hold our number and index pairs
+  //{2: 1, 3: 0, 4: 2, 10: 3}
+  let map = {};
+  //iterate over our num array
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) return [i, j];
+    //store current value
+    let value = nums[i];
+    //we are looking for the compliment to our current value
+    let compliment = target - value;
+    //check if compliment is in our map
+    if (map[compliment] !== undefined) {
+      //if it is, return the index of compliment and i
+      return [map[compliment], i];
+    } else {
+      //if the compliment is not found, then store current index into i
+      map[value] = i;
     }
   }
-  return null;
 };
 
-console.log(twoSum([3, 2, 4], 6));
+//Brute Force
+// var twoSum = function (nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] + nums[j] === target) return [i, j];
+//     }
+//   }
+//   return null;
+// };
+
+console.log(twoSum([3, 2, 4, 10, 30], 40));
